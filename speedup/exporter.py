@@ -81,7 +81,12 @@ class EntityCsvExporter(object):
                 raise RuntimeError('unknown file type: {}'.format(fpath))
 
     def export(self):
-        return self.export_from_file(self.openfile())
+        _f = self.openfile()
+        if _f is not None: 
+            return self.export_from_file(_f)
+        else:
+            # missing file
+            return None
 
     @staticmethod
     def validate(entity):
