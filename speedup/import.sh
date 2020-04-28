@@ -1,5 +1,5 @@
-mkdir csv
 python3 exporter.py --export release --export master --export label --export artist .. csv
+mkdir -p csv
 python3 discogs-psql.py < sql/DropTables.sql
 python3 discogs-psql.py < sql/CreateTables.sql
 python3 discogs-import.py csv/*
