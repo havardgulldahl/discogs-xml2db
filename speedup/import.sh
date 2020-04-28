@@ -1,5 +1,7 @@
 python3 exporter.py --export release --export master --export label --export artist .. csv
 mkdir -p csv
+# test DB setup 
+echo "\\conninfo" | python3 discogs-psql.py
 python3 discogs-psql.py < sql/DropTables.sql
 python3 discogs-psql.py < sql/CreateTables.sql
 python3 discogs-import.py csv/*
